@@ -4,7 +4,6 @@ import '../db/notes_database.dart';
 import '../model/note.dart';
 import '../widget/note_form_widget.dart';
 
-
 class AddEditNotePage extends StatefulWidget {
   final Note? note;
 
@@ -12,6 +11,7 @@ class AddEditNotePage extends StatefulWidget {
     Key? key,
     this.note,
   }) : super(key: key);
+
   @override
   _AddEditNotePageState createState() => _AddEditNotePageState();
 }
@@ -49,8 +49,9 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
                 setState(() => this.isImportant = isImportant),
             onChangedNumber: (number) => setState(() => this.number = number),
             onChangedTitle: (title) => setState(() => this.title = title),
-            onChangedDescription: (description) =>
-                setState(() => this.description = description),
+            onChangedDescription: (description) => setState(
+              () => this.description = description,
+            ),
           ),
         ),
       );

@@ -8,7 +8,6 @@ import '../widget/note_card_widget.dart';
 import 'edit_note_page.dart';
 import 'note_detail_page.dart';
 
-
 class NotesPage extends StatefulWidget {
   @override
   _NotesPageState createState() => _NotesPageState();
@@ -21,22 +20,18 @@ class _NotesPageState extends State<NotesPage> {
   @override
   void initState() {
     super.initState();
-
     refreshNotes();
   }
 
   @override
   void dispose() {
     NotesDatabase.instance.close();
-
     super.dispose();
   }
 
   Future refreshNotes() async {
     setState(() => isLoading = true);
-
     this.notes = await NotesDatabase.instance.readAllNotes();
-
     setState(() => isLoading = false);
   }
 
@@ -45,9 +40,9 @@ class _NotesPageState extends State<NotesPage> {
         appBar: AppBar(
           title: const Text(
             'Notes',
-            style:  TextStyle(fontSize: 24),
+            style: TextStyle(fontSize: 24),
           ),
-          actions: const [ Icon(Icons.search), SizedBox(width: 12)],
+          actions: const [Icon(Icons.search), SizedBox(width: 12)],
         ),
         body: Center(
           child: isLoading

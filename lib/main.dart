@@ -9,13 +9,10 @@ Future main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-
   runApp(MyApp());
 }
-
 class MyApp extends StatelessWidget {
-  static final String title = 'Notes SQLite';
-
+  static const String title = 'Notes SQLite';
   @override
   Widget build(BuildContext context) => MaterialApp(
         debugShowCheckedModeBanner: false,
