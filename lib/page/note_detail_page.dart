@@ -47,6 +47,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
             : Padding(
                 padding: const EdgeInsets.all(12),
                 child: ListView(
+                  physics: const BouncingScrollPhysics(),
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   children: [
                     Text(

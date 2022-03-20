@@ -29,9 +29,9 @@ class _NotesPageState extends State<NotesPage> {
     super.dispose();
   }
 
-  Future refreshNotes() async {
+  Future<void>refreshNotes() async {
     setState(() => isLoading = true);
-    this.notes = await NotesDatabase.instance.readAllNotes();
+    notes = await NotesDatabase.instance.readAllNotes();
     setState(() => isLoading = false);
   }
 
@@ -76,13 +76,11 @@ class _NotesPageState extends State<NotesPage> {
         crossAxisSpacing: 4,
         itemBuilder: (context, index) {
           final note = notes[index];
-
           return GestureDetector(
             onTap: () async {
               await Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => NoteDetailPage(noteId: note.id!),
               ));
-
               refreshNotes();
             },
             child: NoteCardWidget(note: note, index: index),

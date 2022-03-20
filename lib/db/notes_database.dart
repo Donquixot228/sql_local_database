@@ -12,7 +12,6 @@ class NotesDatabase {
 
   Future<Database> get database async {
     if (_database != null) return _database!;
-
     _database = await _initDB('notes.db');
     return _database!;
   }
@@ -20,7 +19,6 @@ class NotesDatabase {
   Future<Database> _initDB(String filePath) async {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, filePath);
-
     return await openDatabase(path, version: 1, onCreate: _createDB);
   }
 
@@ -72,7 +70,6 @@ CREATE TABLE $tableNotes (
     final orderBy = '${NoteFields.time} ASC';
     // final result =
     //     await db.rawQuery('SELECT * FROM $tableNotes ORDER BY $orderBy');
-
     final result = await db.query(tableNotes, orderBy: orderBy);
 
     return result.map((json) => Note.fromJson(json)).toList();

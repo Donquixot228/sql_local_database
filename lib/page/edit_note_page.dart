@@ -88,7 +88,7 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
     }
   }
 
-  Future updateNote() async {
+  Future<void> updateNote() async {
     final note = widget.note!.copy(
       isImportant: isImportant,
       number: number,
@@ -99,7 +99,7 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
     await NotesDatabase.instance.update(note);
   }
 
-  Future addNote() async {
+  Future<void> addNote() async {
     final note = Note(
       title: title,
       isImportant: true,
